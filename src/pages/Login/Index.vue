@@ -90,12 +90,13 @@
        * @param {Object} user The user to be logged in.
        */
       login(user) {
-        axios.post('http://localhost:4040/api/merchant/login', {"email": user.email, "password": user.password})
-          .then(function(response){
-            alert("Check console for response");
-            console.log(response);
-            store.dispatch('auth/login', user);
-          });
+        // axios.post('http://localhost:4040/api/merchant/login', {"email": user.email, "password": user.password})
+        //   .then(function(response){
+        //     alert("Check console for response");
+        //     console.log(response);
+        //     store.dispatch('auth/login', user);
+        //   });
+        this.$store.dispatch('auth/login', user);
       },
     },
 

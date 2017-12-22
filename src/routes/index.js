@@ -30,6 +30,18 @@ export default [
     },
   },
 
+  //Event Selection
+  {
+    path: '/event',
+    name: 'event.index',
+    component: () => import('@/pages/Event/Index'),
+
+    // If the user needs to be authenticated to view this page
+    meta: {
+      auth: true,
+    },
+  },
+
   // Login
   {
     path: '/login',

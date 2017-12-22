@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-bind:style="back">
     <router-view></router-view>
   </div>
 </template>
@@ -15,7 +15,7 @@
     /**
      * The name of the application.
      */
-    name: 'vue-boilerplate',
+    name: 'vue-boilerplate', 
 
     /**
      * Fires when the app has been mounted.

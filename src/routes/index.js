@@ -41,6 +41,30 @@ export default [
       auth: true,
     },
   },
+  //event creation
+  {
+    path: '/eventcreate',
+    name: 'eventCreate.index',
+    component: () => import('@/pages/CreateEvent/Index'),
+
+    // If the user needs to be authenticated to view this page
+    meta: {
+      auth: true,
+    },
+  },
+
+  {
+    path: '/organizer',
+    name: 'organizerDetails.index',
+    component: () => import('@/pages/Organizer/Index'),
+
+    // If the user needs to be authenticated to view this page
+    meta: {
+      auth: true,
+    },
+  },
+
+  
 
   // Login
   {

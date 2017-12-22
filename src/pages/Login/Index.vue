@@ -44,6 +44,9 @@
         <router-link :to="{ name: 'register.index' }">Register</router-link>
       </div>
     </v-card>
+    <div v-bind:style="footerStyle" class="text-center">
+        <img v-bind:style="infinityIconStyle" :src="image" />
+    </div>
   </v-layout>
 </template>
 
@@ -59,6 +62,7 @@
   import VCard from '@/components/Card';
   import axios from 'axios';
   import store from '@/store';
+  import image from '../../assets/images/payments.png';
 
   export default {
     /**
@@ -73,6 +77,17 @@
      */
     data() {
       return {
+        footerStyle: {
+            backgroundColor: '#666666',
+            padding: '0',
+            margin: '0',
+            border: '0'
+        },
+        infinityIconStyle: {
+            width: '200px',
+            height: '70px'
+        },
+        image: image,
         user: {
           email: null,
           password: null,

@@ -5,7 +5,7 @@
         class="navbar-brand"
         :to="{ name: 'home.index' }"
       >
-        Vue 2 Boilerplate
+        <img v-bind:style="infinityLogoStyle" :src="image" />
       </router-link>
 
       <button
@@ -51,6 +51,26 @@
               Event
             </a>
           </router-link>
+          <router-link
+            :to="{ name: 'eventCreate.index' }"
+            active-class="active"
+            class="nav-item"
+            tag="li"
+          >
+            <a class="nav-link">
+              Create Event
+            </a>
+          </router-link>
+          <router-link
+            :to="{ name: 'organizerDetails.index' }"
+            active-class="active"
+            class="nav-item"
+            tag="li"
+          >
+            <a class="nav-link">
+              Organizer
+            </a>
+          </router-link>
         </ul>
         <span class="navbar-text">
           <a
@@ -77,6 +97,7 @@
 </template>
 
 <script>
+  import image from '../assets/images/logo.png'; 
   /* ============
    * Default Layout
    * ============
@@ -100,6 +121,11 @@
      */
     data() {
       return {
+        image: image,
+        infinityLogoStyle :{
+          width: '180px',
+          height: '50px'
+        },
         menuCollapsed: false,
       };
     },

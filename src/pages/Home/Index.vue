@@ -7,10 +7,10 @@
       <div slot="body">
       Body
       </div>
-      <div slot="footer">
-        Footer
-      </div>
     </v-card>
+    <div v-bind:style="footerStyle" class="text-center">
+        <img v-bind:style="infinityIconStyle" :src="image" />
+    </div>
   </v-layout>
 </template>
 
@@ -24,6 +24,7 @@
 
   import VLayout from '@/layouts/Default';
   import VCard from '@/components/Card';
+  import image from '../../assets/images/payments.png';
 
   export default {
     /**

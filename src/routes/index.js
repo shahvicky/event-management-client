@@ -64,6 +64,17 @@ export default [
     },
   },
 
+  {
+    path: '/additems',
+    name: 'addItems.index',
+    component: () => import('@/pages/AddItems/Index'),
+
+    // If the user needs to be authenticated to view this page
+    meta: {
+      auth: true,
+    },
+  },
+
   
 
   // Login

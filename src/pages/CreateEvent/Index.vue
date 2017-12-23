@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <button type="submit" class="col-sm-5 btn btn-primary">NEXT</button>
+                <button type="button" class="col-sm-5 btn btn-primary" v-on:click="organizerDetail">NEXT</button>
             </div>
         </form>
       </div>
@@ -55,6 +55,7 @@
   import VCard from '@/components/Card';
   import myDatepicker from 'vue-datepicker';
   import image from '../../assets/images/payments.png';
+  import Vue from 'vue';
 
   export default {
     /**
@@ -128,6 +129,16 @@
             },
             
         }
+    },
+
+    methods : {
+
+        organizerDetail : function(event) {
+            Vue.router.push({
+                name: 'organizerDetails.index',
+            });
+        }
+
     },
         
     /**

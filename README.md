@@ -1,4 +1,4 @@
-The name of the screens are according to the desciption in moqups
+The name of the screens are according to the desciption in moqups</br>
   <strike>Home - Payments</br>
   Event Selection</br>
   New Event Details</br>

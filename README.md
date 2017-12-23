@@ -1,3 +1,19 @@
+The name of the screens are according to the desciption in moqups</br>
+  <strike>Home - Payments</br>
+  Event Selection</br>
+  New Event Details</br>
+  Organizer Details</br>
+  Items Home</br></strike>
+  Event Home</br>
+  Delete Item</br>
+  Add Items - Vivek Working</br>
+  Item Added</br>
+  Delete Event</br>
+  Previous Event</br>
+  Print QR code</br>
+  Printing</br>
+
+
 # vue-2-boilerplate
 > A boilerplate for building medium to large Vue 2 single page applications
 

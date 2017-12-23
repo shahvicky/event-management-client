@@ -16,10 +16,10 @@
 
 <script>
   /* ============
-   * Admin Index Page
+   * Home Index Page
    * ============
    *
-   * The admin index page.
+   * The home index page.
    */
 
   import VLayout from '@/layouts/Default';

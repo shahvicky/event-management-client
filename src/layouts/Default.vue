@@ -52,16 +52,6 @@
             </a>
           </router-link>
           <router-link
-            :to="{ name: 'eventCreate.index' }"
-            active-class="active"
-            class="nav-item"
-            tag="li"
-          >
-            <a class="nav-link">
-              Create Event
-            </a>
-          </router-link>
-          <router-link
             :to="{ name: 'organizerDetails.index' }"
             active-class="active"
             class="nav-item"

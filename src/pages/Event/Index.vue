@@ -4,7 +4,7 @@
       
       <div slot="body">
         <div>
-            <button type="button" class="btn btn-success btn-block">CREATE NEW EVENT</button>
+            <button type="button" class="btn btn-success btn-block" v-on:click="createEvent">CREATE NEW EVENT</button>
         </div>
         <div class="row" v-bind:style="gapStyle">
             <div class="col-md-5 align-middle">
@@ -39,6 +39,7 @@
   import VLayout from '@/layouts/Default';
   import VCard from '@/components/Card';
   import image from '../../assets/images/payments.png';
+  import Vue from 'vue';
 
   export default {
     /**
@@ -77,6 +78,13 @@
             background: '#333' /* Modern Browsers */
         }
       };
+    },
+    methods: {
+      createEvent: function(event) {
+          Vue.router.push({
+            name: 'eventCreate.index',
+          });
+      }
     },
 
     

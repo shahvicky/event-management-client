@@ -54,7 +54,7 @@ export const login = ({ commit }) => {
   store.dispatch('account/find');
 
   Vue.router.push({
-    name: 'home.index',
+    name: 'event.index',
   });
 };
 

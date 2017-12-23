@@ -110,4 +110,15 @@ export default [
     path: '/*',
     redirect: '/home',
   },
+    // Admin
+  {
+    path: '/admin',
+    name: 'admin.index',
+    component: () => import('@/pages/Admin/Index'),
+
+    // If the user needs to be a guest to view this page.
+    meta: {
+      auth: true,
+    },
+  },
 ];

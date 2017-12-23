@@ -15,7 +15,7 @@
     /**
      * The name of the application.
      */
-    name: 'vue-boilerplate', 
+    name: 'Infinity', 
 
     /**
      * Fires when the app has been mounted.

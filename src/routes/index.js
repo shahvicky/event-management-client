@@ -18,11 +18,11 @@ export default [
     },
   },
 
-  // Account
+  // Items List
   {
-    path: '/account',
-    name: 'account.index',
-    component: () => import('@/pages/Account/Index'),
+    path: '/itemslist',
+    name: 'itemsList.index',
+    component: () => import('@/pages/ItemsList/Index'),
 
     // If the user needs to be authenticated to view this page.
     meta: {

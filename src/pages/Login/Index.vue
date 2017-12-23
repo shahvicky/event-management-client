@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-card contextual-style="dark">
+    <v-card v-bind:style="gapStyle" contextual-style="dark">
       <span slot="header">
         Login
       </span>
@@ -77,6 +77,9 @@
      */
     data() {
       return {
+        gapStyle: {
+            marginTop: '5rem',
+        },
         footerStyle: {
             backgroundColor: '#666666',
             padding: '0',

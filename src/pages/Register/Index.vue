@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-card contextual-style="dark">
+    <v-card v-bind:style="gapStyle" contextual-style="dark">
       <span slot="header">
         Register
       </span>
@@ -83,6 +83,9 @@
         <router-link :to="{ name: 'login.index' }">Login</router-link>
       </div>
     </v-card>
+    <div v-bind:style="footerStyle" class="text-center">
+        <img v-bind:style="infinityIconStyle" :src="image" />
+    </div>
   </v-layout>
 </template>
 
@@ -96,6 +99,7 @@
 
   import VLayout from '@/layouts/Minimal';
   import VCard from '@/components/Card';
+  import image from '../../assets/images/payments.png';
 
   export default {
     /**
@@ -110,6 +114,20 @@
      */
     data() {
       return {
+        gapStyle: {
+            marginTop: '5rem',
+        },
+        footerStyle: {
+            backgroundColor: '#666666',
+            padding: '0',
+            margin: '0',
+            border: '0'
+        },
+        infinityIconStyle: {
+            width: '200px',
+            height: '70px'
+        },
+        image: image,
         user: {
           firstName: null,
           lastName: null,

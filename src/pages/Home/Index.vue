@@ -32,6 +32,21 @@
      */
     name: 'home-index',
 
+    data() {
+      return {
+        footerStyle: {
+            backgroundColor: '#666666',
+            padding: '0',
+            margin: '0',
+            border: '0'
+        },
+        infinityIconStyle: {
+            width: '200px',
+            height: '70px'
+        },
+        image: image
+      }
+    },
     /**
      * The components that the page can use.
      */

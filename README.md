@@ -3,11 +3,12 @@ The name of the screens are according to the desciption in moqups</br>
   Event Selection</br>
   New Event Details</br>
   Organizer Details</br>
-  Items Home</br></strike>
+  Items Home</br>
+  Add Items</br></strike>
   Event Home</br>
   Delete Item</br>
-  Add Items - Vivek Working</br>
-  Item Added</br>
+  Add Items</br>
+  Item Added - Vivek Working on modal</br>
   Delete Event</br>
   Previous Event</br>
   Print QR code</br>

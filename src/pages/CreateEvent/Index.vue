@@ -6,29 +6,29 @@
       </span>
       <div slot="body">
         <form>
-            <div class="form-group required text-center">
+            <div class="form-group text-center">
                 <label v-bind:style="orStyle" for="eventTitle" class="col-form-label">EVENT TITLE</label>
                 <div class="row justify-content-md-center">
-                    <input v-bind:style="inputStyle" type="text" class="col-sm-5 form-control" id="eventTitle" placeholder="Enter Event Title">
+                    <input v-bind:style="inputStyle" required type="text" class="col-sm-5 form-control" id="eventTitle" placeholder="Enter Event Title">
                 </div>
             </div>
-            <div class="form-group required text-center">
+            <div class="form-group text-center">
                 <label v-bind:style="orStyle">EVENT DATE AND TIME</label>
                 <div class="row justify-content-md-center">
                     <div class="col-sm-4">
                         <label v-bind:style="orStyle" class="col-sm-3 col-form-label">FROM:</label>
-                        <date-picker :date="startTime" :option="option"></date-picker>
+                        <date-picker :date="startTime" :option="option" required></date-picker>
                     </div>
                     <div class="col-sm-4">
                         <label v-bind:style="orStyle" class="col-sm-3 col-form-label">TO:</label>
-                        <date-picker :date="startTime" :option="option"></date-picker>
+                        <date-picker :date="startTime" :option="option" required></date-picker>
                     </div>
                 </div>
             </div>
-            <div class="form-group required text-center">
+            <div class="form-group text-center">
                 <label v-bind:style="orStyle" for="eventVenue" class="col-form-label">EVENT VENUE</label>
                 <div class="row justify-content-md-center">
-                    <input v-bind:style="inputStyle" type="text" class="col-sm-5 form-control" id="eventVenue" placeholder="Enter Event Venue">
+                    <input v-bind:style="inputStyle" required type="text" class="col-sm-5 form-control" id="eventVenue" placeholder="Enter Event Venue">
                 </div>
             </div>
             <div class="text-center">
@@ -93,7 +93,7 @@
                 week: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
                 month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                 format: 'YYYY-MM-DD HH:mm',
-                placeholder: 'select date and time',
+                placeholder: 'YYYY-MM-DD HH:mm',
                 inputStyle: {
                     display: 'inline-block',
                     width : '100%',
@@ -120,6 +120,11 @@
                     month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                     format: 'YYYY-MM-DD HH:mm'
                 },
+                limit: [{
+                    type:'fromto',
+                    from:'2017-12-23',
+                    to:'2019-01-30'
+                }],
             },
             
         }

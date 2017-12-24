@@ -18,9 +18,9 @@ class AuthProxy extends Proxy {
    *
    * @returns {Promise} The result in a promise.
    */
-  login({ username, password }) {
+  login({ email, password }) {
     const data = {
-      username,
+      email,
       password,
       client_id: process.env.API_CLIENT_ID,
       client_secret: process.env.API_CLIENT_SECRET,
@@ -28,7 +28,7 @@ class AuthProxy extends Proxy {
       scope: '',
     };
 
-    return this.submit('post', `${this.endpoint}/token`, data);
+    return this.submit('post', `${this.endpoint}/merchant/login`, data);
   }
 
   /**

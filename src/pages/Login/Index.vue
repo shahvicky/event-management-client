@@ -13,6 +13,7 @@
               </div>
               <input
                 v-model="user.email"
+                required
                 type="email"
                 placeholder="Email"
                 class="form-control"
@@ -26,6 +27,7 @@
               </div>
               <input
                 v-model="user.password"
+                required
                 type="password"
                 placeholder="Password"
                 class="form-control"

@@ -65,7 +65,28 @@
             </div>
             <div class="row justify-content-md-center">
               <div class="col-md-6">
-                <button type="button" class="btn btn-block btn-danger">DELETE ITEMS</button>
+                <button type="button" class="btn btn-block btn-danger" @click="openModal()">DELETE ITEMS</button>
+                  <modal v-if="showModal"> 
+                    <div slot="head">
+                      Delete Item
+                    </div>
+                    
+                    <div slot="body">
+                      <div class="row justify-content-md-center">
+                        Delete this item?
+                      </div>
+                      <div class="row justify-content-md-center">
+                        Note: You will need to create this item again.
+                      </div>
+                    </div>
+                      
+                    <div slot="footer">
+                      <div class="justify-content-md-center">
+                        <button type="button" class="btn btn-sm btn-outline-info" @click="closeModal()"> Close </button>
+                        <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" @click="submitAndClose()"> Submit </button>
+                      </div>
+                    </div>
+                  </modal>
               </div>
             </div>
           </div>
@@ -87,6 +108,7 @@
   </v-layout>
 </template>
 
+
 <script>
   /* ============
    * Account Index Page
@@ -98,6 +120,7 @@
   import VLayout from '@/layouts/Default';
   import VCard from '@/components/Card';
   import image from '../../assets/images/payments.png';
+  import Modal from '@/components/Modal';
 
   export default {
     /**
@@ -130,11 +153,21 @@
           {itemName:"SHOTS", itemCost:100, inventory:5000, description:"TEQUILLA", image:"put here link to image"},
           {itemName:"COCKTAIL", itemCost:80, inventory:5000, description:"SEX ON BEACH", image:"put here link to image"},
           {itemName:"RUM", itemCost:60, inventory:5000, description:"OLD MONK", image:"put here link to image"}
-        ]
+        ],
+        showModal:false,
       }
     },
 
     methods: {
+      openModal() {
+        this.showModal = true;
+      },
+      closeModal() {
+        this.showModal = false;
+      },
+      submitAndClose() {
+        this.showModal = false;
+      },
 
     },
 
@@ -144,6 +177,7 @@
     components: {
       VLayout,
       VCard,
+      Modal,
     },
   };
 </script>

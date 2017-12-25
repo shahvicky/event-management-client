@@ -103,12 +103,12 @@ export default [
 
   {
     path: '/',
-    redirect: '/home',
+    redirect: '/event',
   },
 
   {
     path: '/*',
-    redirect: '/home',
+    redirect: '/event',
   },
     // Admin
   {

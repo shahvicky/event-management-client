@@ -30,7 +30,7 @@ export const register = ({ commit }) => {
    */
   commit(types.LOGIN, 'RandomGeneratedToken');
   Vue.router.push({
-    name: 'home.index',
+    name: 'event.index',
   });
 };
 
@@ -48,7 +48,7 @@ export const login = (context, payload) => {
          context.commit(types.LOGIN, response);
          store.dispatch('account/find');
          Vue.router.push({
-           name: 'home.index',
+           name: 'event.index',
          });
        }
      })

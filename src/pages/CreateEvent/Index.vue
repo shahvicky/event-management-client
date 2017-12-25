@@ -17,11 +17,11 @@
                 <div class="row justify-content-md-center">
                     <div class="col-sm-4">
                         <label v-bind:style="orStyle" class="col-sm-3 col-form-label">FROM:</label>
-                        <date-picker :date="startTime" :option="option" required></date-picker>
+                        <date-picker :date="startTime" :option="option" :limit="limit"></date-picker>
                     </div>
                     <div class="col-sm-4">
                         <label v-bind:style="orStyle" class="col-sm-3 col-form-label">TO:</label>
-                        <date-picker :date="startTime" :option="option" required></date-picker>
+                        <date-picker :date="startTime" :option="option" :limit="limit"></date-picker>
                     </div>
                 </div>
             </div>
@@ -83,6 +83,9 @@
             startTime: {
                 time: ''
             },
+            endtime: {
+                time: ''
+            },
             orStyle: {
                 textAlign: 'center',
                 color: 'black',
@@ -115,17 +118,17 @@
                 },
                 overlayOpacity: 0.5, // 0.5 as default 
                 dismissible: true, // as true as default 
-                timeoption: {
+            },
+            timeoption: {
                     type: 'min',
                     week: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
                     month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                     format: 'YYYY-MM-DD HH:mm'
                 },
-                limit: [{
-                    type:'fromto',
-                    from:'2017-12-23',
-                    to:'2019-01-30'
-                }],
+            limit: {
+                type:'fromto',
+                from:'2017-12-23',
+                to:'2019-01-30'
             },
             
         }

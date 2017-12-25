@@ -81,7 +81,7 @@
     },
     methods: {
       createEvent: function(event) {
-          Vue.router.push({
+          this.$router.push({
             name: 'eventCreate.index',
           });
       }

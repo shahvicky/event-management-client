@@ -35,7 +35,7 @@
                 
                    <!-- <div class="col-md-4">
                     </div> -->
-                        <button class="col-md-3 btn btn-basic">BACK</button>
+                        <button type="button" class="col-md-3 btn btn-basic" @click="backToAllItems()">BACK</button>
                     
                         <button type="submit" class="col-md-3 btn btn-primary">ADD ITEM</button>
                
@@ -91,6 +91,14 @@
                 border: '1px solid #999',
             },
         }
+    },
+
+    methods: {
+
+        backToAllItems() {
+            this.$router.push({path:'/itemslist'});
+        }
+
     },
         
     /**

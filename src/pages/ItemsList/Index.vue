@@ -95,7 +95,7 @@
             </div>
             <div class="row justify-content-md-center">
               <div class="col-md-8">
-                <button type="button" class="btn btn-block btn-secondary btn-lg">ADD MORE ITEMS</button>
+                <button type="button" class="btn btn-block btn-secondary btn-lg" @click="addItems()">ADD MORE ITEMS</button>
               </div>
             </div>
           </div>
@@ -167,6 +167,10 @@
       },
       submitAndClose() {
         this.showModal = false;
+      },
+
+      addItems() {
+        this.$router.push({path:'/additems'});
       },
 
     },

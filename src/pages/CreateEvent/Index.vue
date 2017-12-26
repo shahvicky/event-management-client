@@ -5,36 +5,60 @@
         Enter Event Details
       </span>
       <div slot="body">
-        <form>
-            <div class="form-group text-center">
-                <label v-bind:style="orStyle" for="eventTitle" class="col-form-label">EVENT TITLE</label>
-                <div class="row justify-content-md-center">
-                    <input v-bind:style="inputStyle" required type="text" class="col-sm-5 form-control" id="eventTitle" placeholder="Enter Event Title">
-                </div>
-            </div>
-            <div class="form-group text-center">
-                <label v-bind:style="orStyle">EVENT DATE AND TIME</label>
-                <div class="row justify-content-md-center">
-                    <div class="col-sm-4">
-                        <label v-bind:style="orStyle" class="col-sm-3 col-form-label">FROM:</label>
-                        <date-picker :date="startTime" :option="option" :limit="limit"></date-picker>
+        <div class="row justify-content-md-center">
+            <div class="col-md-6">
+                <form>
+                    <div class="form-group text-center">
+                        <label v-bind:style="orStyle" for="eventTitle" class="col-form-label" data-toggle="tooltip" title="Required">EVENT TITLE</label>
+                        <input v-bind:style="inputStyle" required type="text" class="form-control" id="eventTitle" placeholder="Enter Event Title">
                     </div>
-                    <div class="col-sm-4">
-                        <label v-bind:style="orStyle" class="col-sm-3 col-form-label">TO:</label>
-                        <date-picker :date="startTime" :option="option" :limit="limit"></date-picker>
+                    <div class="form-group text-center">
+                        <label v-bind:style="orStyle">EVENT DATE AND TIME</label>
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-6">
+                                <label v-bind:style="orStyle" class="col-form-label" data-toggle="tooltip" title="Required">FROM:</label>
+                                <date-picker :date="startTime" :option="option" :limit="limitFrom"></date-picker>
+                            </div>
+                            <div class="col-md-6">
+                                <label v-bind:style="orStyle" class="col-form-label" data-toggle="tooltip" title="Required">TO:</label>
+                                <date-picker :date="startTime" :option="option" :limit="limitTo"></date-picker>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="form-group text-center">
+                        <label v-bind:style="orStyle">TICKET CATEGORY AND COUNT</label>
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-6">
+                                <label v-bind:style="orStyle" class="col-form-label">CATEGORY:</label>
+                                <div v-for="(input, index) in categories">
+                                    <input v-bind:style="inputStyle" type="text" class="form-control" id="eventCategory" placeholder="Ticket Category Type">
+                                    <div v-bind:style="smallGapStyle"></div>
+                                    <button type="button" class="btn btn-danger" v-if="index != 0" @click="deleteCategory(index)">Remove</button>
+                                    <div v-bind:style="smallGapStyle"></div>
+                                </div>
+                                <div v-bind:style="smallGapStyle"></div>
+                                <button type="button" class="btn btn-basic" @click="addCategory()">Add Category</button>
+                            </div>
+                            <div class="col-md-6">
+                                <label v-bind:style="orStyle" class="col-form-label">COUNT:</label>
+                                <input v-bind:style="inputStyle" type="number" v-bind:class="{ 'is-invalid': attemptSubmit && wrongNumber }" class="form-control" id="number" placeholder="Ticket count">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group text-center">
+                        <label v-bind:style="orStyle" for="eventVenue" class="col-form-label" data-toggle="tooltip" title="Required">EVENT VENUE</label>
+                        <input v-bind:style="inputStyle" required type="text" class="form-control" id="eventVenue" placeholder="Enter Event Venue">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="col-sm-5 btn btn-primary" @click="addEvent()">ADD EVENT</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group text-center">
-                <label v-bind:style="orStyle" for="eventVenue" class="col-form-label">EVENT VENUE</label>
-                <div class="row justify-content-md-center">
-                    <input v-bind:style="inputStyle" required type="text" class="col-sm-5 form-control" id="eventVenue" placeholder="Enter Event Venue">
-                </div>
-            </div>
-            <div class="text-center">
-                <button type="button" class="col-sm-5 btn btn-primary" v-on:click="organizerDetail">NEXT</button>
-            </div>
-        </form>
+        </div>
+        
       </div>
     </v-card>
     <div v-bind:style="footerStyle" class="text-center">
@@ -125,21 +149,49 @@
                     month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                     format: 'YYYY-MM-DD HH:mm'
                 },
-            limit: {
+            limitFrom: [{
                 type:'fromto',
-                from:'2017-12-23',
-                to:'2019-01-30'
+                from: ((new Date).toJSON()).substring(0,10),
+                to:''
+            }],
+            dateFrom: ((new Date).toJSON()).substring(0,10),
+            limitTo: [{
+                type:'fromto',
+                from: ((new Date).toJSON()).substring(0,10),
+                to:''
+            }],
+            attemptSubmit: false,
+            categories: [{category:''}],
+            smallGapStyle: {
+                height: '5px'
             },
+
             
+        }
+    },
+
+    computed: {
+        wrongNumber() {
+            return (this.isNumeric(this.number) === false || this.number < 0)
         }
     },
 
     methods : {
 
-        organizerDetail : function(event) {
-            Vue.router.push({
-                name: 'organizerDetails.index',
-            });
+        addEvent: function(){
+            console.log(this.dateFrom)
+        },
+        isNumeric: function (n) {
+            return !isNaN(parseFloat(n)) && isFinite(n);
+        },
+
+        addCategory: function() {
+            this.categories.push({
+                category:''
+            })
+        },
+        deleteCategory(index) {
+            this.categories.splice(index,1)
         }
 
     },

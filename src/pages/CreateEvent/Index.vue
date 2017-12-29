@@ -13,17 +13,8 @@
                         <input v-bind:style="inputStyle" required type="text" class="form-control" id="eventTitle" placeholder="Enter Event Title">
                     </div>
                     <div class="form-group text-center">
-                        <label v-bind:style="orStyle">EVENT DATE AND TIME</label>
-                        <div class="row justify-content-md-center">
-                            <div class="col-md-6">
-                                <label v-bind:style="orStyle" class="col-form-label" data-toggle="tooltip" title="Required">FROM:</label>
-                                <date-picker :date="startTime" :option="option" :limit="limitFrom"></date-picker>
-                            </div>
-                            <div class="col-md-6">
-                                <label v-bind:style="orStyle" class="col-form-label" data-toggle="tooltip" title="Required">TO:</label>
-                                <date-picker :date="startTime" :option="option" :limit="limitTo"></date-picker>
-                            </div>
-                        </div>
+                        <label v-bind:style="orStyle" class="col-form-label" data-toggle="tooltip" title="Required">EVENT DATE AND TIME</label>
+                        <date-picker v-model="dateRange" lang="en" v-bind:not-before="dateToday" type="datetime" range format="yyyy-MM-dd hh:mm:ss" confirm></date-picker>
                     </div>
 
                     <div class="form-group text-center">
@@ -64,6 +55,7 @@
     <div v-bind:style="footerStyle" class="text-center">
         <img v-bind:style="infinityIconStyle" :src="image" />
     </div>
+    
   </v-layout>
 </template>
 
@@ -77,9 +69,10 @@
 
   import VLayout from '@/layouts/Default';
   import VCard from '@/components/Card';
-  import myDatepicker from 'vue-datepicker';
   import image from '../../assets/images/payments.png';
   import Vue from 'vue';
+  import DatePicker from 'vue2-datepicker'
+
 
   export default {
     /**
@@ -104,67 +97,20 @@
                 borderRadius: '25px',
                 border: '1px solid #999',
             },
-            startTime: {
-                time: ''
-            },
-            endtime: {
-                time: ''
-            },
+            
             orStyle: {
                 textAlign: 'center',
                 color: 'black',
                 marginTop: '1rem',
                 fontWeight: 'bold'
             },
-            option: {
-                type: 'min',
-                week: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
-                month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                format: 'YYYY-MM-DD HH:mm',
-                placeholder: 'YYYY-MM-DD HH:mm',
-                inputStyle: {
-                    display: 'inline-block',
-                    width : '100%',
-                    padding: '6px',
-                    lineHeight: '22px',
-                    fontSize: '16px',
-                    border: '1px solid #999',
-                    borderRadius: '25px',
-                    color: '#666666'
-                },
-                color: {
-                    header: '#666666',
-                    headerText: '#fff'
-                },
-                buttons: {
-                    ok: 'Ok',
-                    cancel: 'Cancel'
-                },
-                overlayOpacity: 0.5, // 0.5 as default 
-                dismissible: true, // as true as default 
-            },
-            timeoption: {
-                    type: 'min',
-                    week: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
-                    month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                    format: 'YYYY-MM-DD HH:mm'
-                },
-            limitFrom: [{
-                type:'fromto',
-                from: ((new Date).toJSON()).substring(0,10),
-                to:''
-            }],
-            dateFrom: ((new Date).toJSON()).substring(0,10),
-            limitTo: [{
-                type:'fromto',
-                from: ((new Date).toJSON()).substring(0,10),
-                to:''
-            }],
             attemptSubmit: false,
             categories: [{category:''}],
             smallGapStyle: {
                 height: '5px'
             },
+            dateRange:'',
+            dateToday: (new Date).toLocaleString(),
 
             
         }
@@ -179,7 +125,7 @@
     methods : {
 
         addEvent: function(){
-            console.log(this.dateFrom)
+            console.log(this.dateRange == '')
         },
         isNumeric: function (n) {
             return !isNaN(parseFloat(n)) && isFinite(n);
@@ -202,7 +148,8 @@
     components: {
       VLayout,
       VCard,
-      'date-picker': myDatepicker,
+      DatePicker,
+    
     },
   };
 </script>
